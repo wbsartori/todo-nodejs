@@ -3,7 +3,8 @@
 ---
 
 ### Recursos
-
+- [x] GET /
+- [x] GET /users
 - [x] POST /users
 - [x] GET /todos
 - [x] POST /todos
@@ -12,7 +13,8 @@
 - [x] DELETE /todos/:id
 
 ### Testes
-
+- [ ] GET /
+- [ ] GET /users
 - [ ] POST /users
 - [ ] GET /todos
 - [ ] POST /todos
@@ -20,3 +22,4 @@
 - [ ] PATCH /todos/:id/done
 - [ ] DELETE /todos/:id
 - [ ] Middlewares
+    - [ ] checksExistsUserAccount
