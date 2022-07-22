@@ -79,9 +79,7 @@ app.put("/todo/:id", checksExistsUserAccount, (request, response) => {
       if(todo.id === id){
         todo.title = title;
         todo.deadline = deadline;
-      } else {
-        return response.status(400).json({error: "Not found post to username!"});
-      }
+      } 
     }    
   }
 
@@ -89,11 +87,31 @@ app.put("/todo/:id", checksExistsUserAccount, (request, response) => {
 });
 
 app.patch('/todos/:id/done', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
+  const { id } = request.params;  
+
+  for(let user of users){
+    for(let todo of user.todos){
+      if(todo.id === id){
+        todo.done = true;        
+      }
+    }    
+  }
+
+  return response.status(200).json(users).send();
 });
 
 app.delete('/todos/:id', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
+  const { id } = request.params;  
+    
+  for(let user of users){
+    for(let todo of user.todos){
+      if(todo.id === id){
+        user.todos.splice(user, 1);     
+      }
+    }    
+  }
+  
+  return response.status(200).json(users).send();    
 });
 
 module.exports = app;
